@@ -177,7 +177,7 @@ public class PanelCarrito extends javax.swing.JPanel {
             mainPanel.add(productoPanel, c);
 
             // Añade un separador después de cada producto, excepto el último
-            if (i < new ArrayList<>().size() - 1) {
+            if (i < detalleCarritos.size() - 1) {
                 JPanel separatorPanel = createSeparatorPanel();
                 c.gridx = 0;
                 c.gridy = i * 2 + 1;

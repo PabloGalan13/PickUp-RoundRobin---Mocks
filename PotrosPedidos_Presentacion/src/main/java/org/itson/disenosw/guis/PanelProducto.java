@@ -2,6 +2,7 @@ package org.itson.disenosw.guis;
 
 import BOs.AgregarCarritoBO;
 import BOs.ConsultarProductoBO;
+import DAOs.ProductoDAO;
 import excepciones.ExcepcionAT;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -11,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import mocks.Producto;
 import org.itson.disenosw.dtos.ProductoDTO;
 
 /**
@@ -24,7 +26,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private static final Logger logger = Logger.getLogger(PanelProducto.class.getName());
     AgregarCarritoBO agregarCarritoBO;
     ConsultarProductoBO consultarProductoBO;
-    ProductoDTO productoDTO;
+    Producto producto;
 
     /**
      * Constructor de la clase VistaInicioSesion.
@@ -175,17 +177,17 @@ public class PanelProducto extends javax.swing.JPanel {
         } catch (ExcepcionAT ex) {
             logger.log(Level.SEVERE, "Producto no encontrado");
         }
-        lblNombre.setText(productoDTO.getNombre().toUpperCase());
+        lblNombre.setText(producto.getNombre().toUpperCase());
         try {
-            lblDescripcion.setText(productoDTO.getDescripcion());
+            lblDescripcion.setText(producto.getDescripcion());
         } catch (NullPointerException e) {
             logger.log(Level.INFO, "El producto no tiene descrpición");
         }
-        lblPrecio.setText(String.valueOf(productoDTO.getPrecio()));
+        lblPrecio.setText(String.valueOf(producto.getCosto()));
         String rutaFolder = "/productos/370x150/";
         StringBuilder rutaRelativa = new StringBuilder();
         rutaRelativa.append(rutaFolder);
-        rutaRelativa.append(productoDTO.getDireccionImagen());
+        rutaRelativa.append(producto.getRutaImagen());
 
         // Cargar la imagen del producto
         ImageIcon icon = new ImageIcon(PanelMenu.class.getResource(String.valueOf(rutaRelativa)));
@@ -196,7 +198,8 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private void consultarProducto() throws ExcepcionAT {
         Long idProducto = framePrincipal.getIdProducto();
-//        productoDTO = consultarProductoBO.consultarProductoID(idProducto);
+        ProductoDAO productoDAO = new ProductoDAO();
+        producto = productoDAO.BuscarProducto(idProducto);
     }
 
     private void setFuentes() {

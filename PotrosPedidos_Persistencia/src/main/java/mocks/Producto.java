@@ -108,8 +108,6 @@ public class Producto {
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
-    
-    
 
     public void generarLista(){
         productos.add(new Producto(1l, "Hamburguesa Clasica", 10, "asdasdasd", 90.0f, "hamburguesa-clasica.jpg"));
