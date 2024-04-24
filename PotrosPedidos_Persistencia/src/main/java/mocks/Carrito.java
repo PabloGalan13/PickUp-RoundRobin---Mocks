@@ -8,16 +8,15 @@ import java.util.List;
 
 /**
  *
- * @author yohan
+ * @author jl4ma
  */
 public class Carrito {
-    
     Integer cantidad;
     Float costoFinal;
-    Productos producto;
+    Producto producto;
     List<Carrito> carrito;
 
-    public Carrito(Integer cantidad, Float costoFinal, Productos producto) {
+    public Carrito(Integer cantidad, Float costoFinal, Producto producto) {
         this.cantidad = cantidad;
         this.costoFinal = costoFinal;
         this.producto = producto;
@@ -41,11 +40,11 @@ public class Carrito {
         this.costoFinal = costoFinal;
     }
 
-    public Productos getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Productos producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
@@ -56,8 +55,4 @@ public class Carrito {
     public void setCarrito(List<Carrito> carrito) {
         this.carrito = carrito;
     }
-
-    
-    
-    
 }

@@ -9,18 +9,17 @@ import java.util.List;
 
 /**
  *
- * @author yohan
+ * @author jl4ma
  */
-public class Productos {
-    
+public class Producto {
     Long id;
     String nombre;
     Integer cantidad;
     String descripcion;
     Float costo;
-    List<Productos> productos;
+    List<Producto> productos;
 
-    public Productos(Long id, String nombre, Integer cantidad, String descripcion, Float costo) {
+    public Producto(Long id, String nombre, Integer cantidad, String descripcion, Float costo) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
@@ -29,7 +28,7 @@ public class Productos {
         productos= new ArrayList<>();
     }
 
-    public Productos(String nombre, Integer cantidad, String descripcion, Float costo) {
+    public Producto(String nombre, Integer cantidad, String descripcion, Float costo) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.descripcion = descripcion;
@@ -37,7 +36,7 @@ public class Productos {
         productos= new ArrayList<>();
     }
 
-    public Productos() {
+    public Producto() {
         productos= new ArrayList<>();
     }
 
@@ -84,36 +83,26 @@ public class Productos {
 
  
 
-    public List<Productos> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Productos> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
 
     public void generarLista(){
-        productos.add(new Productos(1l, "Hamburguesa Clasica", 10, "asdasdasd", 90.0f));
-        productos.add(new Productos(2l, "Torta cubana", 10, "asdasdasd", 75.0f));
-        productos.add(new Productos(3l, "Sushi", 10, "asdasdasd", 100.0f));
-        productos.add(new Productos(4l, "Coca-cola", 10, "asdasdasd", 20.0f));
-        productos.add(new Productos(5l, "Hamburguesa de pollo", 10, "asdasdasd", 90.0f));
-        productos.add(new Productos(6l, "Sandwich", 10, "asdasdasd", 55.0f));
-        productos.add(new Productos(7l, "Jamaica", 10, "asdasdasd", 15.0f));
+        productos.add(new Producto(1l, "Hamburguesa Clasica", 10, "asdasdasd", 90.0f));
+        productos.add(new Producto(2l, "Torta cubana", 10, "asdasdasd", 75.0f));
+        productos.add(new Producto(3l, "Sushi", 10, "asdasdasd", 100.0f));
+        productos.add(new Producto(4l, "Coca-cola", 10, "asdasdasd", 20.0f));
+        productos.add(new Producto(5l, "Hamburguesa de pollo", 10, "asdasdasd", 90.0f));
+        productos.add(new Producto(6l, "Sandwich", 10, "asdasdasd", 55.0f));
+        productos.add(new Producto(7l, "Jamaica", 10, "asdasdasd", 15.0f));
         
     }
     @Override
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", descripcion=" + descripcion + ", costo=" + costo + ", productos=" + productos + '}';
     }
-
-   
-    
-
-    
-    
-
-    
-    
-            
 }

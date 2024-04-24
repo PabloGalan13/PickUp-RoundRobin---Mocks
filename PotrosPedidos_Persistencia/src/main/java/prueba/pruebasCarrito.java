@@ -4,12 +4,12 @@
  */
 package prueba;
 
-import DAOs.CarritoDAO;
-import DAOs.UsuarioDAO;
-import dominio.Carrito;
-import dominio.Usuario;
-import excepciones.ExcepcionAT;
-import java.io.IOException;
+//import DAOs.CarritoDAO;
+//import DAOs.UsuarioDAO;
+//import dominio.Carrito;
+//import dominio.Usuario;
+//import excepciones.ExcepcionAT;
+//import java.io.IOException;
 
 /**
  *
@@ -17,15 +17,15 @@ import java.io.IOException;
  */
 public class pruebasCarrito {
 
-    public static void main(String[] args) throws ExcepcionAT {
+    public static void main(String[] args) {
 
-        CarritoDAO c = new CarritoDAO();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-        Usuario usuario = usuarioDAO.buscarUsuarioPorIdCIA("00000244454");
-
-        Carrito carrito = new Carrito(0.0f,0,usuario);
-        
-        c.agregarCarrito(carrito);
+//        CarritoDAO c = new CarritoDAO();
+//        UsuarioDAO usuarioDAO = new UsuarioDAO();
+//
+//        Usuario usuario = usuarioDAO.buscarUsuarioPorIdCIA("00000244454");
+//
+//        Carrito carrito = new Carrito(0.0f,0,usuario);
+//        
+//        c.agregarCarrito(carrito);
     }
 }

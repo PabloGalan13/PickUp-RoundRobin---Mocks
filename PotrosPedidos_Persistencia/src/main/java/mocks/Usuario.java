@@ -9,10 +9,10 @@ import java.util.List;
 
 /**
  *
- * @author yohan
+ * @author jl4ma
  */
 public class Usuario {
-
+    
     String ID;
     String contra;
     List<Usuario> listaaUsuarios;
