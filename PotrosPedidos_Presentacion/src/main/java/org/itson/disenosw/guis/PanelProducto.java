@@ -106,7 +106,6 @@ public class PanelProducto extends javax.swing.JPanel {
         add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 533, 40, 40));
 
         txtCantidad.setBackground(new java.awt.Color(250, 250, 250));
-        txtCantidad.setForeground(new java.awt.Color(0, 0, 0));
         txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidad.setText("1");
         txtCantidad.setBorder(null);
@@ -116,14 +115,8 @@ public class PanelProducto extends javax.swing.JPanel {
 
         lblImagen.setText("jLabel1");
         add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 121, 370, 150));
-
-        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 296, 370, 30));
-
-        lblDescripcion.setForeground(new java.awt.Color(0, 0, 0));
         add(lblDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 340, 370, 66));
-
-        lblPrecio.setForeground(new java.awt.Color(0, 0, 0));
         add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 425, 90, 31));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panelProducto.png"))); // NOI18N

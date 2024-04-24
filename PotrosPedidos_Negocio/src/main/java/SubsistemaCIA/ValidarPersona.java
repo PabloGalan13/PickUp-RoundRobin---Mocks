@@ -5,6 +5,7 @@
 package SubsistemaCIA;
 
 
+import BOs.VerificarPersonaBO;
 import excepciones.ExcepcionAT;
 
 import org.itson.disenosw.dtos.UsuarioDTO;
@@ -15,6 +16,14 @@ import org.itson.disenosw.dtos.UsuarioDTO;
  */
 public class ValidarPersona  {
 
-   
+   public boolean validacion(String user, String contra) throws ExcepcionAT{
+       VerificarPersonaBO persona = new VerificarPersonaBO();
+       
+        if (persona.comprobar(user, contra)) {
+            return true;
+        }else{
+            return false;
+        }
+   }
 
 }

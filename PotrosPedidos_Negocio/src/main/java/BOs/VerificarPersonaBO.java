@@ -4,6 +4,10 @@
  */
 package BOs;
 
+import DAOs.UsuarioCiaDAO;
+import IDAOs.IUsuarioDAO;
+import excepciones.ExcepcionAT;
+
 
 
 /**
@@ -12,5 +16,13 @@ package BOs;
  */
 public class VerificarPersonaBO {
 
- 
+        IUsuarioDAO usuario = new UsuarioCiaDAO(); 
+        
+        public boolean comprobar(String user, String contra) throws ExcepcionAT{
+            if(usuario.BuscarPersona(user, contra) != null){
+                return true;
+            }else{
+                return false;
+            }
+        }
 }

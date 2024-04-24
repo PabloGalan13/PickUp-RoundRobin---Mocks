@@ -13,6 +13,17 @@ import excepciones.ExcepcionAT;
  */
 public class ControlCIA {
 
+    public boolean validar(String user, String contra) throws ExcepcionAT{
+       ValidarPersona persona = new ValidarPersona();
+       
+        if (persona.validacion(user, contra)) {
+            return true;
+        }else{
+            return false;
+    }
+    }
+  
+  
   
     
 }

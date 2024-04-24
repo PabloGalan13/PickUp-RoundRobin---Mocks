@@ -17,7 +17,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private JPanel panelActual;
     private Long idProducto;
-    private String numID;
+    private Long id;
 
     /**
      * Constructor de la clase Ventana.
@@ -214,13 +214,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.idProducto = idProducto;
     }
 
-    public String getNumID() {
-        return numID;
+    public Long getId() {
+        return id;
     }
 
-    public void setNumID(String numID) {
-        this.numID = numID;
+    public void setId(Long id) {
+        this.id = id;
     }
+
+   
     
     
 }
