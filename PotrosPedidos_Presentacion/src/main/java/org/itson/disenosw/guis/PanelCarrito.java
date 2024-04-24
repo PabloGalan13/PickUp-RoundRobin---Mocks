@@ -4,8 +4,7 @@ import BOs.ConsultarProductoBO;
 import DAOs.CarritoDAO;
 import DAOs.DetalleCarritoDAO;
 import DAOs.UsuarioDAO;
-import dominio.Carrito;
-import dominio.DetalleCarrito;
+import mocks.DetalleCarrito;
 import excepciones.ExcepcionAT;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -14,10 +13,9 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +27,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import org.itson.disenosw.dtos.ProductoDTO;
+import mocks.Carrito;
+import mocks.DetalleCarrito;
+import mocks.Producto;
 
 /**
  * Esta clase representa la vista de inicio de sesión en la interfaz gráfica del
@@ -39,10 +39,10 @@ import org.itson.disenosw.dtos.ProductoDTO;
 public class PanelCarrito extends javax.swing.JPanel {
 
     private FramePrincipal framePrincipal;
-    Carrito usuario;
-    CarritoDAO carritoDAO = new CarritoDAO();
-    DetalleCarritoDAO detalleCarritoDAO = new DetalleCarritoDAO();
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
+//    Carrito usuario;
+//    CarritoDAO carritoDAO = new CarritoDAO();
+//    DetalleCarritoDAO detalleCarritoDAO = new DetalleCarritoDAO();
+//    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     /**
      * Constructor de la clase VistaInicioSesion.
@@ -118,11 +118,11 @@ public class PanelCarrito extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     public void ayuda() throws ExcepcionAT {
-        try {
-            usuario = carritoDAO.buscarCarritoPorUsuarioId(5L);
-        } catch (ExcepcionAT ex) {
-            Logger.getLogger(PanelCarrito.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            usuario = carritoDAO.buscarCarritoPorUsuarioId(5L);
+//        } catch (ExcepcionAT ex) {
+//            Logger.getLogger(PanelCarrito.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 //        DetalleCarritoDAO d = new DetalleCarritoDAO();
     }
 
@@ -132,38 +132,26 @@ public class PanelCarrito extends javax.swing.JPanel {
         mainPanel.setMaximumSize(new Dimension(370, 550));// Elimina esta línea
         mainPanel.setSize(new Dimension(370, 550));
 
-        ConsultarProductoBO consultarProductoBO = new ConsultarProductoBO();
+        List<DetalleCarrito> detalleCarritos;
+        
+        DetalleCarrito detalleCarrito = new DetalleCarrito();
+        detalleCarrito.generarLista();
+        detalleCarritos = detalleCarrito.getDetalles();
 
-        List<DetalleCarrito> detallesCarrito = detalleCarritoDAO.buscarListaDetalleCarrito(usuario);
-
-//        List<String[]> productos = new ArrayList<>();
-//        productos.add(new String[]{"Hamburguesa clásica", "$120", "/productos/120x100/hamburguesa-clasica.jpg"});
-//        productos.add(new String[]{"Jamaica", "$25", "/productos/120x100/jamaica.jpg"});
-//        productos.add(new String[]{"Hamburguesa de pollo", "$150", "/productos/120x100/hamburguesa-pollo.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
+//        List<DetalleCarrito> detallesCarrito = detalleCarritoDAO.buscarListaDetalleCarrito(usuario);
         GridBagConstraints c = new GridBagConstraints();
 
         //TODO no jala el insertar elemento de arriba a abajo, empiezan del centro
         c.anchor = GridBagConstraints.NORTH;
 
-//        ActionListener productoListener = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // Obtener el ID del producto clickeado
-//                String idProducto = e.getActionCommand();
-//                // Realizar la acción deseada con el ID del producto
-//                // Por ejemplo, abrir una nueva ventana con más detalles del producto
-//                System.out.println("Producto clickeado: " + idProducto);
-//            }
-//        };
+
         // Iterar sobre la lista de productos y crear los paneles correspondientes
-        for (int i = 0; i < detallesCarrito.size(); i++) {
+        for (int i = 0; i < detalleCarritos.size(); i++) {
 //            String[] producto = detallesCarrito.get(i);
-            JPanel productoPanel = createProductoPanel(detallesCarrito.get(i).getProducto().getNombre(), detallesCarrito.get(i).getProducto().getPrecio(), detallesCarrito.get(i).getProducto().getDireccionImagen());
+            JPanel productoPanel = createProductoPanel(
+                    detalleCarritos.get(i).getProducto().getNombre(), 
+                    detalleCarritos.get(i).getProducto().getCosto(), 
+                    detalleCarritos.get(i).getProducto().getRutaImagen());
 
 //            String identificador = "producto_" + i;
 //            Long identificador = detallesCarrito.get(i).getIdProductoCafeteria();
@@ -189,7 +177,7 @@ public class PanelCarrito extends javax.swing.JPanel {
             mainPanel.add(productoPanel, c);
 
             // Añade un separador después de cada producto, excepto el último
-            if (i < detallesCarrito.size() - 1) {
+            if (i < new ArrayList<>().size() - 1) {
                 JPanel separatorPanel = createSeparatorPanel();
                 c.gridx = 0;
                 c.gridy = i * 2 + 1;
@@ -221,7 +209,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         cont.setOpaque(false);
 
         panelTop.add(cont);
-        
+
     }
 
     /**

@@ -13,6 +13,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import mocks.Producto;
 import org.itson.disenosw.dtos.ProductoDTO;
 
 /**
@@ -152,40 +155,25 @@ public class PanelMenu extends javax.swing.JPanel {
         mainPanel.setMaximumSize(new Dimension(370, 550));// Elimina esta línea
         mainPanel.setSize(new Dimension(370, 550));
 
-        ConsultarProductoBO consultarProductoBO = new ConsultarProductoBO();
-        List<ProductoDTO> productosDTO = consultarProductoBO.consultarTodosLosProductos();
+        List<Producto> productos;
+        
+        Producto producto = new Producto();
+        producto.generarLista();
+        productos = producto.getProductos();
 
-//        List<String[]> productos = new ArrayList<>();
-//        productos.add(new String[]{"Hamburguesa clásica", "$120", "/productos/120x100/hamburguesa-clasica.jpg"});
-//        productos.add(new String[]{"Jamaica", "$25", "/productos/120x100/jamaica.jpg"});
-//        productos.add(new String[]{"Hamburguesa de pollo", "$150", "/productos/120x100/hamburguesa-pollo.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
-//        productos.add(new String[]{"Torta cubana", "$100", "/productos/120x100/torta-cubana.jpg"});
         GridBagConstraints c = new GridBagConstraints();
 
         //TODO no jala el insertar elemento de arriba a abajo, empiezan del centro
         c.anchor = GridBagConstraints.NORTH;
 
-//        ActionListener productoListener = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // Obtener el ID del producto clickeado
-//                String idProducto = e.getActionCommand();
-//                // Realizar la acción deseada con el ID del producto
-//                // Por ejemplo, abrir una nueva ventana con más detalles del producto
-//                System.out.println("Producto clickeado: " + idProducto);
-//            }
-//        };
         // Iterar sobre la lista de productos y crear los paneles correspondientes
-        for (int i = 0; i < productosDTO.size(); i++) {
+        
+        for (int i = 0; i < productos.size(); i++) {
 //            String[] producto = productosDTO.get(i);
-            JPanel productoPanel = createProductoPanel(productosDTO.get(i).getNombre(), productosDTO.get(i).getPrecio(), productosDTO.get(i).getDireccionImagen());
+            JPanel productoPanel = createProductoPanel(productos.get(i).getNombre(), productos.get(i).getCosto(), productos.get(i).getRutaImagen());
 
 //            String identificador = "producto_" + i;
-            Long identificador = productosDTO.get(i).getIdProductoCafeteria();
+            Long identificador = productos.get(i).getId();
             productoPanel.putClientProperty(identificador, productoPanel);
 //            String identificadorString = String.valueOf(identificador);
 //            productoPanel.putClientProperty(i, idProducto);
@@ -208,7 +196,7 @@ public class PanelMenu extends javax.swing.JPanel {
             mainPanel.add(productoPanel, c);
 
             // Añade un separador después de cada producto, excepto el último
-            if (i < productosDTO.size() - 1) {
+            if (i < productos.size() - 1) {
                 JPanel separatorPanel = createSeparatorPanel();
                 c.gridx = 0;
                 c.gridy = i * 2 + 1;
@@ -216,8 +204,6 @@ public class PanelMenu extends javax.swing.JPanel {
             }
             
             productoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-
         }
 
         //TODO hacer el scrollPane un ScrollPaneWin11
@@ -241,24 +227,7 @@ public class PanelMenu extends javax.swing.JPanel {
         cont.setOpaque(false);
 
         panelTop.add(cont);
-//        
-//        this.setLayout(new BorderLayout());
-//        JLabel fondo = new javax.swing.JLabel();fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-//        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panelMenu.png"))); // NOI18N
-//        fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-//        add(fondo,BorderLayout.CENTER);
 
-//        Container contenedor = fondo.getParent();
-// Asegúrate de que el contenedor utiliza un layout que soporte z-order, como JPanel
-//        if (contenedor instanceof JPanel) {
-//            JPanel panelContenedor = (JPanel) contenedor;
-//            // Cambia el orden de los componentes para poner el menú encima del fondo
-//            panelContenedor.setComponentZOrder(mainPanel, 0);
-//            panelContenedor.setComponentZOrder(fondo, 1);
-//            // Repinta el contenedor para reflejar los cambios
-//            panelContenedor.revalidate();
-//            panelContenedor.repaint();
-//        }
     }
 
     /**

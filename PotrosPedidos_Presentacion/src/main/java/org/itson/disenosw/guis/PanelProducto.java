@@ -128,8 +128,7 @@ public class PanelProducto extends javax.swing.JPanel {
             framePrincipal.mostrarAviso("El campo de cantidad no puede estar vacío", "Campo de cantidad vacío");
         } else {
 
-            try {
-                //            Productos producto = new Productos();
+//            Productos producto = new Productos();
 //            producto.generarLista();
 //            Usuario usuario = new Usuario();
 //            System.out.println(framePrincipal.getIdProducto());
@@ -144,13 +143,8 @@ public class PanelProducto extends javax.swing.JPanel {
 //            IAgregarCarrito cart = new AgregarCarrito(carrito);
 ////            cart.agregarCarrito(pro.consultarProducto(framePrincipal.getIdProducto()), Integer.valueOf(txtCantidad.getText()), usuario);
 //            cart.agregarCarrito(pro.consultarProducto(framePrincipal.getIdProducto()), Integer.valueOf(txtCantidad.getText()), usuario);
-
-                agregarCarritoBO.agregarCarrito(consultarProductoBO.consultarProductoID(framePrincipal.getIdProducto()), framePrincipal.getNumID(), Integer.decode(txtCantidad.getText()), framePrincipal.getIdProducto());
-
-            } catch (ExcepcionAT ex) {
-                Logger.getLogger(PanelProducto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            framePrincipal.setIdProducto(null);
+//                agregarCarritoBO.agregarCarrito(consultarProductoBO.consultarProductoID(framePrincipal.getIdProducto()), framePrincipal.getNumID(), Integer.decode(txtCantidad.getText()), framePrincipal.getIdProducto());
+                        framePrincipal.setIdProducto(null);
             framePrincipal.cambiarVistaCarrito();
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -175,6 +169,7 @@ public class PanelProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMasActionPerformed
 
     private void setDatos() {
+        
         try {
             consultarProducto();
         } catch (ExcepcionAT ex) {
@@ -201,7 +196,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private void consultarProducto() throws ExcepcionAT {
         Long idProducto = framePrincipal.getIdProducto();
-        productoDTO = consultarProductoBO.consultarProductoID(idProducto);
+//        productoDTO = consultarProductoBO.consultarProductoID(idProducto);
     }
 
     private void setFuentes() {

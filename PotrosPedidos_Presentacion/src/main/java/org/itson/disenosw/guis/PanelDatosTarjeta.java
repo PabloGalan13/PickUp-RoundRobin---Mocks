@@ -84,23 +84,23 @@ public class PanelDatosTarjeta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        List<Banco> banco = b.getListaBanco();
-        String nombre = txtNombre.getText();
-        String numero = txtNumero.getText();
-        String fecha = txtfecha.getText();
-        String cvv = txtcvv.getText();
-        TarjetaDTO t = new TarjetaDTO(numero, nombre, fecha, Integer.parseInt(cvv));
-        validarTarjetaBO vb = new validarTarjetaBO();
-        try {
-            if (vb.ValidarBanco(t)) {
-//            ventana.mostrarConfirmacion("PEDIDO EXITOSO", "EXITO");
-                ventana.cambiarPanelPagoExito();
-            } else {
-                JOptionPane.showMessageDialog(this, "Ingrese datos correctos");
-            }
-        } catch (ExcepcionAT ex) {
-            Logger.getLogger(PanelDatosTarjeta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        List<Banco> banco = b.getListaBanco();
+//        String nombre = txtNombre.getText();
+//        String numero = txtNumero.getText();
+//        String fecha = txtfecha.getText();
+//        String cvv = txtcvv.getText();
+//        TarjetaDTO t = new TarjetaDTO(numero, nombre, fecha, Integer.parseInt(cvv));
+//        validarTarjetaBO vb = new validarTarjetaBO();
+//        try {
+//            if (vb.ValidarBanco(t)) {
+////            ventana.mostrarConfirmacion("PEDIDO EXITOSO", "EXITO");
+//                ventana.cambiarPanelPagoExito();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Ingrese datos correctos");
+//            }
+//        } catch (ExcepcionAT ex) {
+//            Logger.getLogger(PanelDatosTarjeta.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

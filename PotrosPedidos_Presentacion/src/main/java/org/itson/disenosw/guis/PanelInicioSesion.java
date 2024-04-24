@@ -32,7 +32,7 @@ public class PanelInicioSesion extends javax.swing.JPanel {
         this.framePrincipal = framePrincipal;
         initComponents();
         setFonts();
-        setRegistros();
+//        setRegistros();
     }
 
     /**
@@ -100,6 +100,18 @@ public class PanelInicioSesion extends javax.swing.JPanel {
     public void setRegistros() {
         
     }
+//    public void setRegistros() {
+//        InsercionMasiva insercionMasiva= new InsercionMasiva();
+//        try {
+//            insercionMasiva.insercionUsuariosCIA();
+//            insercionMasiva.insercionesBanco();
+//            insercionMasiva.insercionesCafeteria();
+//            insercionMasiva.insercionesProductos();
+//            insercionMasiva.insercionesUsuario();
+//        } catch (Exception e) {
+//            logger.log(Level.INFO, "Registros aregados anteriormente");
+//        }
+//    }
 
     private void setFonts() {
         try {
