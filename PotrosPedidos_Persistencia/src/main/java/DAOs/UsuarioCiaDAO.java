@@ -36,4 +36,12 @@ public class UsuarioCiaDAO implements IUsuarioDAO {
 
         return null;
     }
+    public Long idPersona(String usuario){
+        for (Usuario us : u.getListaUsuarios()) {
+            if (usuario.equalsIgnoreCase(us.getID())) {
+                return us.getId_usuario(); 
+            }
+        }
+        return null;
+    }
 }

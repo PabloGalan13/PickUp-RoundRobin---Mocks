@@ -5,6 +5,8 @@
 package SubsistemaCIA;
 
 import BOs.VerificarPersonaBO;
+import DAOs.UsuarioCiaDAO;
+import IDAOs.IUsuarioDAO;
 import excepciones.ExcepcionAT;
 
 /**
@@ -13,8 +15,11 @@ import excepciones.ExcepcionAT;
  */
 public class ControlCIA {
 
+    ValidarPersona persona = new ValidarPersona();
+    IUsuarioDAO user = new UsuarioCiaDAO();
+    
     public boolean validar(String user, String contra) throws ExcepcionAT{
-       ValidarPersona persona = new ValidarPersona();
+       
        
         if (persona.validacion(user, contra)) {
             return true;
@@ -22,6 +27,15 @@ public class ControlCIA {
             return false;
     }
     }
+        public Long idUsuario(String user) throws ExcepcionAT{
+            if (this.user.idPersona(user)>=0) {
+                return this.user.idPersona(user);
+            }else{
+                return 0l;
+                   
+        }
+    }
+
   
   
   

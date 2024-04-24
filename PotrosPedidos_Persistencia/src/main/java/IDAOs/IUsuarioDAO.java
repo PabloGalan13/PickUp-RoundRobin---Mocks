@@ -13,4 +13,5 @@ import mocks.Usuario;
  */
 public interface IUsuarioDAO {
        public Usuario BuscarPersona(String id,String contra) throws ExcepcionAT;
+       public Long idPersona(String usuario)throws ExcepcionAT;
 }

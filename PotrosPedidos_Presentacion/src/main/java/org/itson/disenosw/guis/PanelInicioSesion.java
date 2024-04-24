@@ -2,6 +2,8 @@ package org.itson.disenosw.guis;
 
 import BOs.InsercionMasiva;
 import BOs.VerificarPersonaBO;
+import SubsistemaBanco.ControlTarjeta;
+import SubsistemaCIA.ControlCIA;
 import excepciones.ExcepcionAT;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -81,36 +83,22 @@ public class PanelInicioSesion extends javax.swing.JPanel {
             framePrincipal.mostrarAviso("Es necesario llenar todos los campos", "Campos inválidos");
         } else {
 
-            //TODO
-            //la contraseña no se debería mandar como string
-            //el metodo validar persona debería lanzar excepcion y cacharse aquí
-            UsuarioDTO u = new UsuarioDTO(new String(txtContraseña.getPassword()), txtID.getText());
-            VerificarPersonaBO vp = new VerificarPersonaBO();
-
+            ControlCIA tarjeta = new ControlCIA();
             try {
-                if (vp.buscarPersona(txtID.getText(), txtContraseña.getText())) {
-                    framePrincipal.setNumID(txtID.getText());
+                if (tarjeta.validar(txtID.getText(), txtContraseña.getText())) {
+                    framePrincipal.setId(tarjeta.idUsuario(txtID.getText()));
                     framePrincipal.cambiarVistaMenu();
-                } else {
-                    framePrincipal.mostrarAviso("No se encontró un usuario con\nlas credenciales proporcionadas", "Usuario inválido");
+                }else{
+                    framePrincipal.mostrarAviso("Credenciales no validas", "Vuelva a intentarlo");
                 }
             } catch (ExcepcionAT ex) {
-                framePrincipal.mostrarAviso(ex.getMessage(), "Aviso");
+                Logger.getLogger(PanelInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     public void setRegistros() {
-        InsercionMasiva insercionMasiva= new InsercionMasiva();
-        try {
-            insercionMasiva.insercionUsuariosCIA();
-            insercionMasiva.insercionesBanco();
-            insercionMasiva.insercionesCafeteria();
-            insercionMasiva.insercionesProductos();
-            insercionMasiva.insercionesUsuario();
-        } catch (Exception e) {
-            logger.log(Level.INFO, "Registros aregados anteriormente");
-        }
+        
     }
 
     private void setFonts() {
