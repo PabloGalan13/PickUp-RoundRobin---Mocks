@@ -12,5 +12,13 @@ import org.itson.disenosw.dtos.TarjetaDTO;
  * @author yohan
  */
 public class validarTarjeta   {
-   
+    ControlTarjeta b = new ControlTarjeta();
+
+    public boolean validarTarjeta(String nombre, String cvv) throws ExcepcionAT {
+        try {
+            return  b.validarTarjeta(nombre, cvv);
+        } catch (ExcepcionAT e) {
+            throw new ExcepcionAT(e.getMessage());
+        }
+    }
 }

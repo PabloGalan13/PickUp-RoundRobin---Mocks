@@ -14,5 +14,5 @@ import org.itson.disenosw.dtos.TarjetaDTO;
  */
 public interface IValidarTarjeta {
 
-    public Boolean ValidarTarjeta(TarjetaDTO tarjeta) throws ExcepcionAT;
+    public boolean validarTarjeta(String nombre, String cvv) throws ExcepcionAT;
 }

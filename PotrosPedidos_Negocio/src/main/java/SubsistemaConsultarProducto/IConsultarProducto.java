@@ -14,6 +14,6 @@ import org.itson.disenosw.dtos.ProductoDTO;
  */
 public interface IConsultarProducto {
     
-    public ProductoDTO consultarProducto(ProductoDTO producto) throws ExcepcionAT;
+     public boolean consultarProducto(Long id) throws ExcepcionAT;
      
 }

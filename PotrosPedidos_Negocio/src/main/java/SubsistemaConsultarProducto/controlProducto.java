@@ -4,6 +4,8 @@
  */
 package SubsistemaConsultarProducto;
 
+import excepciones.ExcepcionAT;
+
 
 
 /**
@@ -12,5 +14,13 @@ package SubsistemaConsultarProducto;
  */
 public class controlProducto {
 
+    ConsultarProducto p = new ConsultarProducto();
 
+    public boolean validarTarjeta(String nombre, String cvv) throws ExcepcionAT {
+        try {
+            return  
+        } catch (ExcepcionAT e) {
+            throw new ExcepcionAT(e.getMessage());
+        }
+    }
 }
