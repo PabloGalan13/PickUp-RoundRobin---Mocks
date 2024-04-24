@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import mocks.DetalleCarrito;
 import mocks.Producto;
 import org.itson.disenosw.dtos.ProductoDTO;
 
@@ -38,6 +39,9 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private final FramePrincipal framePrincipal;
     private Integer idProducto = 0;
+    List<Producto> productos;
+
+    Producto producto = new Producto();
 
     /**
      * Constructor de la clase VistaInicioSesion.
@@ -47,6 +51,9 @@ public class PanelMenu extends javax.swing.JPanel {
     public PanelMenu(FramePrincipal framePrincipal) {
         this.framePrincipal = framePrincipal;
         initComponents();
+
+        producto.generarLista();
+        productos = producto.getProductos();
         try {
             crearMenu();
 //        fondo.setLocation(0, 0);
@@ -155,19 +162,12 @@ public class PanelMenu extends javax.swing.JPanel {
         mainPanel.setMaximumSize(new Dimension(370, 550));// Elimina esta línea
         mainPanel.setSize(new Dimension(370, 550));
 
-        List<Producto> productos;
-        
-        Producto producto = new Producto();
-        producto.generarLista();
-        productos = producto.getProductos();
-
         GridBagConstraints c = new GridBagConstraints();
 
         //TODO no jala el insertar elemento de arriba a abajo, empiezan del centro
         c.anchor = GridBagConstraints.NORTH;
 
         // Iterar sobre la lista de productos y crear los paneles correspondientes
-        
         for (int i = 0; i < productos.size(); i++) {
 //            String[] producto = productosDTO.get(i);
             JPanel productoPanel = createProductoPanel(productos.get(i).getNombre(), productos.get(i).getCosto(), productos.get(i).getRutaImagen());
@@ -181,11 +181,16 @@ public class PanelMenu extends javax.swing.JPanel {
             productoPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    // Acción a realizar al hacer clic en el panel de producto
-                    // Aquí puedes acceder al identificador del panel haciendo uso de la variable 'identificador'
-                    System.out.println("Clic en el panel de producto: " + identificador);
-                    framePrincipal.setIdProducto(identificador);
-                    framePrincipal.cambiarVistaProducto();
+                    try {
+                        // Acción a realizar al hacer clic en el panel de producto
+                        // Aquí puedes acceder al identificador del panel haciendo uso de la variable 'identificador'
+
+                        verificarProductoEnCarrito(identificador);
+                        framePrincipal.setIdProducto(identificador);
+                        framePrincipal.cambiarVistaProducto();
+                    } catch (Exception ex) {
+                         framePrincipal.mostrarAviso(ex.getMessage(), "Aviso");
+                    }
 
                 }
             });
@@ -202,7 +207,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 c.gridy = i * 2 + 1;
                 mainPanel.add(separatorPanel, c);
             }
-            
+
             productoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
 
@@ -252,7 +257,6 @@ public class PanelMenu extends javax.swing.JPanel {
         rutaRelativa.append(rutaFolder);
         rutaRelativa.append(rutaImagen);
 
-        
         // Cargar la imagen del producto
         ImageIcon icon = new ImageIcon(PanelMenu.class.getResource(String.valueOf(rutaRelativa)));
         JLabel imagenLabel = new JLabel(icon);
@@ -292,7 +296,6 @@ public class PanelMenu extends javax.swing.JPanel {
         c.gridx = 0;
         c.gridy = 1;
         panel.add(precioLabel, c);
-        
 
         // Agregar un ActionListener al panel del producto
 //        panel.addMouseListener(new MouseAdapter() {
@@ -371,6 +374,18 @@ public class PanelMenu extends javax.swing.JPanel {
                 is.close();
             } catch (IOException ex) {
                 Logger.getLogger(PanelMenu.class.getName()).log(Level.SEVERE, "Error al cerrar InputStream", ex);
+            }
+        }
+    }
+
+    public void verificarProductoEnCarrito(Long identificador) throws Exception {
+        DetalleCarrito detalleCarrito = new DetalleCarrito();
+        detalleCarrito.generarLista();
+        List<DetalleCarrito> detalleCarritos = detalleCarrito.getDetalles();
+//        List<DetalleCarrito> deallesUsuario = new ArrayList<>();
+        for (DetalleCarrito detalle : detalleCarritos) {
+            if (detalle.getProducto().getId().equals(identificador)) {
+                throw new Exception("El producto y a existe en el carrito");
             }
         }
     }
