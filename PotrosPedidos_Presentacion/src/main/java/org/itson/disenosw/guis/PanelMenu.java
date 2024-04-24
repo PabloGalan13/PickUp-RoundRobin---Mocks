@@ -129,7 +129,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private void btnCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarritoActionPerformed
 
-        framePrincipal.setIdProducto(1l);
+//        framePrincipal.setIdProducto(1l);
         framePrincipal.cambiarVistaCarrito();
     }//GEN-LAST:event_btnCarritoActionPerformed
 

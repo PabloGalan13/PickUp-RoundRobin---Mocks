@@ -21,6 +21,7 @@ public class DetalleCarrito {
     private List<DetalleCarrito> detalles;
 
     public DetalleCarrito() {
+        detalles = new ArrayList<>();
     }
 
     public DetalleCarrito(Long id, Carrito carrito, Producto producto, Integer cantidad, Float total) {
@@ -39,6 +40,7 @@ public class DetalleCarrito {
         this.total = total;
         detalles = new ArrayList<>();
     }
+    
 
     public Long getId() {
         return id;

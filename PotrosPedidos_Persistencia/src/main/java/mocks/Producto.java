@@ -46,6 +46,7 @@ public class Producto {
         this.costo = costo;
         productos= new ArrayList<>();
     }
+    
 
     public Producto() {
         productos= new ArrayList<>();

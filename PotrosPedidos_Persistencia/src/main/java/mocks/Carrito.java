@@ -27,6 +27,7 @@ public class Carrito {
         carrito = new ArrayList<>();
     }
 
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -36,6 +37,7 @@ public class Carrito {
     }
 
     public Carrito() {
+        carrito = new ArrayList<>();
     }
 
     public Long getId() {

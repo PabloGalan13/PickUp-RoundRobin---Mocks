@@ -22,6 +22,7 @@ public class Usuario {
         this.ID = ID;
         this.contra = contra;
     }
+    
 
     public Long getId_usuario() {
         return id_usuario;
@@ -48,6 +49,7 @@ public class Usuario {
     
 
     public Usuario() {
+        listaaUsuarios = new ArrayList<>();
     }
 
     public String getID() {
