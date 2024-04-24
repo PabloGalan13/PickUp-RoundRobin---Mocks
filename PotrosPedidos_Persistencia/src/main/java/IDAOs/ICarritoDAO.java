@@ -5,6 +5,7 @@
 package IDAOs;
 
 import excepciones.ExcepcionAT;
+import mocks.Carrito;
 
 /**
  *
@@ -12,6 +13,6 @@ import excepciones.ExcepcionAT;
  */
 public interface ICarritoDAO {
 
-    public Boolean BuscarCarrito(Long id) throws ExcepcionAT;
+    public Carrito BuscarCarrito(Long id) throws ExcepcionAT;
 
 }

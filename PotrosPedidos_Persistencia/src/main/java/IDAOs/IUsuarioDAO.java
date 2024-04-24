@@ -5,11 +5,12 @@
 package IDAOs;
 
 import excepciones.ExcepcionAT;
+import mocks.Usuario;
 
 /**
  *
  * @author jl4ma
  */
 public interface IUsuarioDAO {
-       public Boolean BuscarPersona(String id,String contra) throws ExcepcionAT;
+       public Usuario BuscarPersona(String id,String contra) throws ExcepcionAT;
 }

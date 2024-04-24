@@ -24,17 +24,17 @@ public class CarritoDAO implements ICarritoDAO{
     }
 
      @Override
-    public Boolean BuscarCarrito(Long id) throws ExcepcionAT {
+    public Carrito BuscarCarrito(Long id) throws ExcepcionAT {
     if (id==null) {
         
-        return false;
+        return null;
     }
-        for (Carrito c : c.getCarrito()) {
-            if (id .equals(c.getId()) ) {
-                return true;
+        for (Carrito ca : c.getCarrito()) {
+            if (id .equals(ca.getId()) ) {
+                return ca;
             }
         }
 
-        return false;
+        return null;
     }
 }

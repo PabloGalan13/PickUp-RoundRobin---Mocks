@@ -7,6 +7,7 @@ package prueba;
 //import DAOs.CarritoDAO;
 import DAOs.UsuarioCiaDAO;
 import DAOs.UsuarioDAO;
+import mocks.Usuario;
 
 //import DAOs.UsuarioDAO;
 //import dominio.Carrito;
@@ -29,11 +30,11 @@ public class pruebasCarrito {
 //        Carrito carrito = new Carrito(0.0f,0,usuario);
 //        
 //        c.agregarCarrito(carrito);
-        UsuarioCiaDAO u = new UsuarioCiaDAO();
-        if (u.BuscarPersona("'000001234599","c1")) {
-            System.out.println("hola");
-        }
-
+      UsuarioCiaDAO u = new UsuarioCiaDAO();
+        Usuario s = new Usuario();
+        s.generarLista();
+        // Pasa el ID y la contraseña por separado como argumentos a BuscarPersona
+        System.out.println(u.BuscarPersona("000001234599", "c1").getID());
 
     }
 }

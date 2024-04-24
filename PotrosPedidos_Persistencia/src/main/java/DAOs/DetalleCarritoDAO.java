@@ -9,34 +9,44 @@ import excepciones.ExcepcionAT;
 import mocks.DetalleCarrito;
 import mocks.Producto;
 
-
-
 /**
  *
  * @author galan
  */
-public class DetalleCarritoDAO implements IDetalleCarritoDAO{
+public class DetalleCarritoDAO implements IDetalleCarritoDAO {
 
-       DetalleCarrito dc = new DetalleCarrito();
+    DetalleCarrito dc = new DetalleCarrito();
 
     public DetalleCarritoDAO() {
         dc.generarLista();
 
     }
 
-       @Override
-    public Boolean BuscarDetalleCarrito(Long id) throws ExcepcionAT {
-    if (id==null) {
-        
-        return false;
-    }
-        for (DetalleCarrito dc : dc.getDetalles()) {
-            if (id .equals(dc.getId()) ) {
-                return true;
+    @Override
+    public DetalleCarrito BuscarDetalleCarrito(Long id) throws ExcepcionAT {
+        if (id == null) {
+
+            return null;
+        }
+        for (DetalleCarrito d : dc.getDetalles()) {
+            if (id.equals(d.getId())) {
+                return d;
             }
         }
 
-        return false;
+        return null;
+    }
+
+    @Override
+    public boolean agregarDetalleCarrito(long id) throws ExcepcionAT {
+        ProductoDAO p = new ProductoDAO();
+        if (p.BuscarProducto(id) == null) {
+
+            return false;
+        } else {
+            dc.setProducto(p.BuscarProducto(id));
+            return true;
+        }
+
     }
 }
-

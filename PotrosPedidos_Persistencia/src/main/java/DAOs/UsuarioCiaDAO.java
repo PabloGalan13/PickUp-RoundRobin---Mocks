@@ -12,7 +12,7 @@ import mocks.Usuario;
  *
  * @author yohan
  */
-public class UsuarioCiaDAO implements IUsuarioDAO{
+public class UsuarioCiaDAO implements IUsuarioDAO {
 
     Usuario u = new Usuario();
 
@@ -20,18 +20,20 @@ public class UsuarioCiaDAO implements IUsuarioDAO{
         u.generarLista();
 
     }
-@Override
-    public Boolean BuscarPersona(String id,String contra) throws ExcepcionAT {
-    if (id==null || contra==null) {
-        
-        return false;
-    }
-        for (Usuario us : u.getListaaUsuarios()) {
-            if (id.equalsIgnoreCase(u.getID())&&contra.equalsIgnoreCase(u.getContra())) {
-                return true;
+
+    @Override
+    public Usuario BuscarPersona(String id, String contra) throws ExcepcionAT {
+        if (id == null || contra == null) {
+            return null;
+        }
+        u.generarLista();
+
+        for (Usuario us : u.getListaUsuarios()) {
+            if (id.equalsIgnoreCase(us.getID()) && contra.equalsIgnoreCase(us.getContra())) {
+                return us; 
             }
         }
 
-        return false;
+        return null;
     }
 }

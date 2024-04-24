@@ -5,12 +5,13 @@
 package IDAOs;
 
 import excepciones.ExcepcionAT;
+import mocks.Banco;
 
 /**
  *
  * @author jl4ma
  */
 public interface ITarjetaDAO {
-        public Boolean BuscarTarjeta(String numero,String cvv) throws ExcepcionAT ;
+        public Banco BuscarTarjeta(String numero,String cvv) throws ExcepcionAT ;
 
 }

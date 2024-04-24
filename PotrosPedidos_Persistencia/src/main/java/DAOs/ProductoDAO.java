@@ -25,18 +25,18 @@ public class ProductoDAO implements IProductoDAO {
     }
 
     @Override
-    public Boolean BuscarProducto(Long id) throws ExcepcionAT {
+    public Producto BuscarProducto(Long id) throws ExcepcionAT {
     if (id==null) {
         
-        return false;
+        return null;
     }
         for (Producto b : p.getProductos()) {
             if (id .equals(b.getId()) ) {
-                return true;
+                return b;
             }
         }
 
-        return false;
+        return null;
     }
 }
 

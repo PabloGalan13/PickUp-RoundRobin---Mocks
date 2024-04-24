@@ -5,12 +5,13 @@
 package IDAOs;
 
 import excepciones.ExcepcionAT;
+import mocks.Producto;
 
 /**
  *
  * @author jl4ma
  */
 public interface IProductoDAO {
-       public Boolean BuscarProducto(Long id) throws ExcepcionAT ;
+       public Producto BuscarProducto(Long id) throws ExcepcionAT ;
  
 }

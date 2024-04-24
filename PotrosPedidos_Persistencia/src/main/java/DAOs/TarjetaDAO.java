@@ -25,18 +25,18 @@ public class TarjetaDAO implements ITarjetaDAO {
     }
 
     @Override
-    public Boolean BuscarTarjeta(String numero,String cvv) throws ExcepcionAT {
+    public Banco BuscarTarjeta(String numero,String cvv) throws ExcepcionAT {
     if (numero==null || cvv==null) {
         
-        return false;
+        return null;
     }
-        for (Banco b : b.getListaBanco()) {
-            if (numero.equalsIgnoreCase(b.getNumero())&&cvv.equalsIgnoreCase(b.getCvv())) {
-                return true;
+        for (Banco t : b.getListaBanco()) {
+            if (numero.equalsIgnoreCase(t.getNumero())&&cvv.equalsIgnoreCase(t.getCvv())) {
+                return t;
             }
         }
 
-        return false;
+        return null;
     }
 }
 
