@@ -14,13 +14,23 @@ import org.itson.disenosw.dtos.ProductoDTO;
  */
 public class controlCarrito {
 
-    AgregarCarritoBO a = new AgregarCarritoBO();
-
-//    public void agregarCarrito(ProductoDTO producto, String idUsuarioCia, Integer cantidad) throws ExcepcionAT {
-//        try {
-//            a.agregarCarrito(producto, idUsuarioCia, cantidad);
-//        } catch (ExcepcionAT e) {
-//            throw new ExcepcionAT(e.getMessage());
-//        }
-//    }
+    AgregarCarrito carro = new AgregarCarrito();
+    AgregarCarritoBO detalle = new AgregarCarritoBO();
+        
+    public boolean carro(Long id) throws ExcepcionAT{
+        if (carro.carrito(id)) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean detalle(Long id) throws ExcepcionAT{
+        
+        if (detalle.detalle(id)) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

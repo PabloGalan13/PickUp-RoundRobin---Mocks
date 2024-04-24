@@ -4,6 +4,9 @@
  */
 package SubsistemaAgregarCarrito;
 
+import BOs.AgregarCarritoBO;
+import excepciones.ExcepcionAT;
+
 
 
 /**
@@ -12,6 +15,15 @@ package SubsistemaAgregarCarrito;
  */
 public class AgregarCarrito   {
 
+    AgregarCarritoBO carrito = new AgregarCarritoBO();
     
+    public boolean carrito(Long id) throws ExcepcionAT{
+        if(carrito.carrito(id)){
+            return true;
+        }else{
+            return false;
+        }
+                
+    }
 
 }
