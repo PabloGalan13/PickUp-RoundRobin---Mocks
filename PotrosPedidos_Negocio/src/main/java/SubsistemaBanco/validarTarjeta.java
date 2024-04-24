@@ -11,16 +11,6 @@ import org.itson.disenosw.dtos.TarjetaDTO;
  *
  * @author yohan
  */
-public class validarTarjeta implements IValidarTarjeta {
-
-    ControlTarjeta control = new ControlTarjeta();
-
-    @Override
-    public Boolean ValidarTarjeta(TarjetaDTO tarjeta) throws ExcepcionAT {
-        try {
-            return control.ValidarTarjeta(tarjeta);
-        } catch (ExcepcionAT e) {
-            throw new ExcepcionAT(e.getMessage());
-        }
-    }
+public class validarTarjeta   {
+   
 }

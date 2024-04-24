@@ -13,18 +13,8 @@ import org.itson.disenosw.dtos.UsuarioDTO;
  *
  * @author yohan
  */
-public class ValidarPersona implements IValidarPersona {
+public class ValidarPersona   {
 
-    ControlCIA control = new ControlCIA();
-
-    @Override
-    public Boolean ValidarPersona(UsuarioDTO usuario) throws ExcepcionAT {
-        
-        try {
-            return control.ValidarPersona(usuario.getIdCia(), usuario.getContra());
-        } catch (ExcepcionAT e) {
-            throw new  ExcepcionAT(e.getMessage());
-        }
-    }
+   
 
 }

@@ -13,17 +13,6 @@ import excepciones.ExcepcionAT;
  */
 public class ControlCIA {
 
-    public ControlCIA() {
-    }
-
-    public Boolean ValidarPersona(String ID, String contra) throws ExcepcionAT {
-
-        VerificarPersonaBO vp = new VerificarPersonaBO();
-        try {
-            return vp.buscarPersona(ID, contra);
-        } catch (ExcepcionAT e) {
-            throw new ExcepcionAT(e.getMessage());
-        }
-
-    }
+  
+    
 }

@@ -4,17 +4,10 @@
  */
 package IDAOs;
 
-import dominio.Usuario;
-import excepciones.ExcepcionAT;
-
 /**
  *
- * @author USER
+ * @author jl4ma
  */
 public interface IUsuarioDAO {
-    public void registrarUsuario (Usuario usuario) throws ExcepcionAT;
     
-    public void actualizarUsuario (Usuario usuario) throws ExcepcionAT;
-    
-    public Usuario buscarUsuarioPorIdCIA(String idUsuarioCia) throws ExcepcionAT;
 }

@@ -13,14 +13,5 @@ import org.itson.disenosw.dtos.TarjetaDTO;
  * @author yohan
  */
 public class ControlTarjeta {
-     validarTarjetaBO vb = new validarTarjetaBO();
-
-    public Boolean ValidarTarjeta(TarjetaDTO tarjeta) throws ExcepcionAT {
-
-        try {
-            return vb.ValidarBanco(tarjeta);
-        } catch (ExcepcionAT e) {
-            throw new ExcepcionAT(e.getMessage());
-        }
-    }
+  
 }

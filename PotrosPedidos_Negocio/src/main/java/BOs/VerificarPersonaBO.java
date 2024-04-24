@@ -4,9 +4,7 @@
  */
 package BOs;
 
-import DAOs.UsuarioCiaDAO;
-import IDAOs.ICiaDAO;
-import excepciones.ExcepcionAT;
+
 
 /**
  *
@@ -14,14 +12,5 @@ import excepciones.ExcepcionAT;
  */
 public class VerificarPersonaBO {
 
-    ICiaDAO cia = new UsuarioCiaDAO();
-//    
-
-    public Boolean buscarPersona(String id, String contra) throws ExcepcionAT {
-        try {
-            return cia.BuscarPersona(id, contra);
-        } catch (Exception e) {
-            throw new ExcepcionAT(e.getMessage());
-        }
-    }
+ 
 }

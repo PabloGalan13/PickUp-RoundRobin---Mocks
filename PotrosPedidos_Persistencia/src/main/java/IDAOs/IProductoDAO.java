@@ -4,12 +4,10 @@
  */
 package IDAOs;
 
-import CIA.UsuarioCIA;
-
 /**
  *
- * @author yohan
+ * @author jl4ma
  */
-public interface ICiaDAO {
-     public Boolean BuscarPersona(String idEstudiante, String contra)throws Exception;
+public interface IProductoDAO {
+    
 }

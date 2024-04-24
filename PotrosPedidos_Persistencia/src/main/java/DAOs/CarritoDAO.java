@@ -4,16 +4,7 @@
  */
 package DAOs;
 
-import cafeteria.ProductoCafeteria;
-import dominio.Carrito;
-import dominio.Producto;
-import dominio.Usuario;
-import excepciones.ExcepcionAT;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+
 
 /**
  *
@@ -21,96 +12,6 @@ import javax.persistence.TypedQuery;
  */
 public class CarritoDAO {
 
-    private EntityManager em;
-    private EntityManagerFactory emf;
-    private Carrito carito;
-
-    public CarritoDAO() {
-        emf = Persistence.createEntityManagerFactory("conexionPU");
-    }
-
-    public void agregarCarrito(Carrito carrito) throws ExcepcionAT {
-        try {
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-
-            em.persist(carrito);
-
-            em.getTransaction().commit();
-            em.close();
-        } catch (Exception e) {
-            em.close();
-            System.out.println(e.getCause());
-            throw new ExcepcionAT("Error al agregar carrito");
-        }
-    }
-
-    public void actualizarCarrito(Carrito producto) throws ExcepcionAT {
-        try {
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-
-            em.merge(producto);
-
-            em.getTransaction().commit();
-            em.close();
-        } catch (Exception e) {
-            em.close();
-            System.out.println(e.getCause());
-            throw new ExcepcionAT("Error al actualizar carrito");
-        }
-    }
-
-    public Carrito buscarCarritoPorUsuario(Usuario usuario) throws ExcepcionAT {
-        try {
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-
-            String jpql3 = "SELECT c FROM Carrito c WHERE c.usuario = :idUsuario";
-
-            TypedQuery<Carrito> query = em.createQuery(jpql3, Carrito.class);
-            query.setParameter("idUsuario", usuario);
-            List<Carrito> carrito = query.getResultList();
-
-            em.getTransaction().commit();
-            em.close();
-
-            if (!carrito.isEmpty()) {
-                return carrito.get(0);
-            } else {
-                throw new ExcepcionAT("Carrito no encontrado por su usuario");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getCause());
-            System.out.println(e.getLocalizedMessage());
-            return null;
-        }
-    }
-
-    public Carrito buscarCarritoPorUsuarioId(long idUsuario) throws ExcepcionAT {
-        try {
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-
-            String jpql = "SELECT c FROM Carrito c WHERE c.usuario.id = :idUsuario";
-
-            TypedQuery<Carrito> query = em.createQuery(jpql, Carrito.class);
-            query.setParameter("idUsuario", idUsuario);
-            List<Carrito> carritos = query.getResultList();
-
-            em.getTransaction().commit();
-            em.close();
-
-            if (!carritos.isEmpty()) {
-                return carritos.get(0);
-            } else {
-                throw new ExcepcionAT("Carrito no encontrado para el usuario con ID: " + idUsuario);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getCause());
-            System.out.println(e.getLocalizedMessage());
-            return null;
-        }
-    }
+   
 
 }

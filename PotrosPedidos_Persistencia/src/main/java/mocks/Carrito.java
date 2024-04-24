@@ -4,6 +4,7 @@
  */
 package mocks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,17 +12,38 @@ import java.util.List;
  * @author jl4ma
  */
 public class Carrito {
+
+    Long id;
     Integer cantidad;
     Float costoFinal;
-    Producto producto;
+    Usuario usuario;
     List<Carrito> carrito;
 
-    public Carrito(Integer cantidad, Float costoFinal, Producto producto) {
+    public Carrito(Long id, Integer cantidad, Float costoFinal, Usuario usuario) {
+        this.id = id;
         this.cantidad = cantidad;
         this.costoFinal = costoFinal;
-        this.producto = producto;
+        this.usuario = usuario;
+        carrito = new ArrayList<>();
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Carrito() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getCantidad() {
@@ -40,12 +62,15 @@ public class Carrito {
         this.costoFinal = costoFinal;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
+    public void generarLista() {
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public List<Carrito> getCarrito() {

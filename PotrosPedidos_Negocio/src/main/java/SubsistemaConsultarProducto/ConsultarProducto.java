@@ -11,18 +11,8 @@ import org.itson.disenosw.dtos.ProductoDTO;
  *
  * @author jl4ma
  */
-public class ConsultarProducto implements IConsultarProducto {
+public class ConsultarProducto    {
 
-    controlProducto cp = new controlProducto();
-
-    @Override
-    public ProductoDTO consultarProducto(ProductoDTO producto) throws ExcepcionAT {
-
-        try {
-            return cp.consultarProducto(producto.getNombre());
-        } catch (ExcepcionAT e) {
-            throw new ExcepcionAT(e.getMessage());
-        }
-    }
+    
 
 }
