@@ -4,10 +4,12 @@
  */
 package IDAOs;
 
+import excepciones.ExcepcionAT;
+
 /**
  *
  * @author jl4ma
  */
 public interface IUsuarioDAO {
-    
+       public Boolean BuscarPersona(String id,String contra) throws ExcepcionAT;
 }

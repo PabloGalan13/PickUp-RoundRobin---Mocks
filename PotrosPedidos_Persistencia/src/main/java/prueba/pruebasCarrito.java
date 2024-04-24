@@ -5,19 +5,21 @@
 package prueba;
 
 //import DAOs.CarritoDAO;
+import DAOs.UsuarioCiaDAO;
+import DAOs.UsuarioDAO;
+
 //import DAOs.UsuarioDAO;
 //import dominio.Carrito;
 //import dominio.Usuario;
 //import excepciones.ExcepcionAT;
 //import java.io.IOException;
-
 /**
  *
  * @author yohan
  */
 public class pruebasCarrito {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 //        CarritoDAO c = new CarritoDAO();
 //        UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -27,5 +29,11 @@ public class pruebasCarrito {
 //        Carrito carrito = new Carrito(0.0f,0,usuario);
 //        
 //        c.agregarCarrito(carrito);
+        UsuarioCiaDAO u = new UsuarioCiaDAO();
+        if (u.BuscarPersona("'000001234599","c1")) {
+            System.out.println("hola");
+        }
+
+
     }
 }

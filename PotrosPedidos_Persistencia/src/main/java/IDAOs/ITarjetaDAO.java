@@ -4,10 +4,13 @@
  */
 package IDAOs;
 
+import excepciones.ExcepcionAT;
+
 /**
  *
  * @author jl4ma
  */
 public interface ITarjetaDAO {
-    
+        public Boolean BuscarTarjeta(String numero,String cvv) throws ExcepcionAT ;
+
 }

@@ -4,10 +4,14 @@
  */
 package IDAOs;
 
+import excepciones.ExcepcionAT;
+
 /**
  *
  * @author jl4ma
  */
 public interface IDetalleCarritoDAO {
-    
+
+    public Boolean BuscarDetalleCarrito(Long id) throws ExcepcionAT;
+
 }

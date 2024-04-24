@@ -4,14 +4,37 @@
  */
 package DAOs;
 
+import IDAOs.ICarritoDAO;
+import excepciones.ExcepcionAT;
+import mocks.Carrito;
+
 
 
 /**
  *
  * @author USER
  */
-public class CarritoDAO {
+public class CarritoDAO implements ICarritoDAO{
 
-   
+     Carrito c = new Carrito();
 
+    public CarritoDAO() {
+        c.generarLista();
+
+    }
+
+     @Override
+    public Boolean BuscarCarrito(Long id) throws ExcepcionAT {
+    if (id==null) {
+        
+        return false;
+    }
+        for (Carrito c : c.getCarrito()) {
+            if (id .equals(c.getId()) ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

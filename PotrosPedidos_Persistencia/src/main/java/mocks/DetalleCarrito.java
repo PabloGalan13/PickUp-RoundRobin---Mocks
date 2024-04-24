@@ -20,6 +20,9 @@ public class DetalleCarrito {
     private Float total;
     private List<DetalleCarrito> detalles;
 
+    public DetalleCarrito() {
+    }
+
     public DetalleCarrito(Long id, Carrito carrito, Producto producto, Integer cantidad, Float total) {
         this.id = id;
         this.carrito = carrito;
@@ -75,6 +78,14 @@ public class DetalleCarrito {
 
     public void setTotal(Float total) {
         this.total = total;
+    }
+
+    public List<DetalleCarrito> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleCarrito> detalles) {
+        this.detalles = detalles;
     }
 
     public void generarLista(){
