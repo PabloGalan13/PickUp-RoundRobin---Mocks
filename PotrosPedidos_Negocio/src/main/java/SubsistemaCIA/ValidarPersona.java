@@ -13,7 +13,7 @@ import org.itson.disenosw.dtos.UsuarioDTO;
  *
  * @author yohan
  */
-public class ValidarPersona   {
+public class ValidarPersona  {
 
    
 

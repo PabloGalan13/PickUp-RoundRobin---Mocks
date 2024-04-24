@@ -63,13 +63,15 @@ public class Carrito {
     }
 
     public void generarLista() {
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
-        carrito.add(new Carrito(id, cantidad, costoFinal, usuario));
+        Usuario usuario = new Usuario();
+        usuario.generarLista();
+        carrito.add(new Carrito(1L, 11, 999.0F, usuario.getListaUsuarios().get(0)));
+        carrito.add(new Carrito(2L, 1, 222.0F, usuario.getListaUsuarios().get(1)));
+        carrito.add(new Carrito(3L, 2, 122.0F, usuario.getListaUsuarios().get(2)));
+        carrito.add(new Carrito(4L, 3, 100.F, usuario.getListaUsuarios().get(3)));
+        carrito.add(new Carrito(5L, 5, 2999.0F, usuario.getListaUsuarios().get(4)));
+        carrito.add(new Carrito(6L, 6, 222.0F, usuario.getListaUsuarios().get(5)));
+        carrito.add(new Carrito(7L, 7, 111.0F, usuario.getListaUsuarios().get(6)));
 
     }
 
